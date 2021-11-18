@@ -7,7 +7,9 @@ import styles from "./Footer.module.scss";
 export const FooterBlog = () => {
   return (
     <div>
-      <Container style={{ backgroundColor: "#202226", padding: 40 }}>
+      <Container
+        style={{ backgroundColor: "#202226", padding: 40, marginTop: 20 }}
+      >
         <Row>
           <Col>
             <Typography variant="h5" className={styles.textContent}>

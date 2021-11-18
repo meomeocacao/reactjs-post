@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import { TYPE_MODAL } from "../PostInfor";
 import CustomizedTooltips from "../../Tooltips/Avatar.Tooltips";
+import { Host } from "../../../api/api";
 interface Props {
   title: string;
   description: string;
@@ -35,7 +36,7 @@ export const Item = (props: Props) => {
           /> */}
           {/* <h1>{props.user}</h1> */}
           <CustomizedTooltips
-            src={"http://" + props.img}
+            src={Host + props.img}
             user={props.user}
             desc={props.description}
           />
@@ -80,7 +81,7 @@ const InforPost = (props: any) => {
   return (
     <div>
       <Image
-        src={"http://" + props.img}
+        src={Host + props.img}
         width="150px"
         height="150px"
         roundedCircle

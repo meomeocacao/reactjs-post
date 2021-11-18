@@ -1,30 +1,21 @@
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import React from "react";
+import { Box } from "@mui/system";
+import { DropDownUser } from "./DropDownUser";
+
 export const NavbarHeader = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Blog</Navbar.Brand>
+        <Navbar.Brand href="/">Blog</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/post">Post</Nav.Link>
-            <Nav.Link href="/sign-up">Sign Up</Nav.Link>
-            <Nav.Link href="/sign-in">Sign In</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          <Nav.Link href="/sign-in">Sign In</Nav.Link>
+          <Nav.Link href="/sign-up">Sign Up</Nav.Link>
         </Navbar.Collapse>
+        <Box>
+          <DropDownUser />
+        </Box>
       </Container>
     </Navbar>
   );

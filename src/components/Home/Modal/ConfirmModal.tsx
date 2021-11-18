@@ -12,8 +12,8 @@ interface Props {
 }
 export const ConfirmModal = (props: Props) => {
   const deletePicture = () => {
-    // const path = "http://localhost:3300/post/delete/" + props.id;
-    const path = "http://localhost:3300/post/delete/";
+    // const path = "https://nestjs-post.herokuapp.com/post/delete/" + props.id;
+    const path = "https://nestjs-post.herokuapp.com/post/delete/";
     axios
       .patch(path)
       .then((res) => {

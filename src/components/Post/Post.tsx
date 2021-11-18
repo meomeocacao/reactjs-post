@@ -39,7 +39,7 @@ const Post = () => {
     newPost.append("title", post.title);
     newPost.append("description", post.description);
     axios
-      .post("http://localhost:3300/post/upload", newPost, {
+      .post("https://nestjs-post.herokuapp.com/post/upload", newPost, {
         headers: { Authorization: "Bearer " + token },
       })
       .then((res) => {
@@ -58,14 +58,14 @@ const Post = () => {
     <div className={styles.User} data-testid="User">
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ display: "grid", width: "40%" }}>
-          <h1>Post</h1>
-          <TextField
+          <h1 className="m-2">Create New Post</h1>
+          {/* <TextField
             placeholder="User"
             className="m-4"
             name="user"
             value={post.user}
             onChange={handleChange}
-          />
+          /> */}
 
           <TextField
             placeholder="Title"

@@ -58,7 +58,7 @@ const User = () => {
       password: infor.password,
     };
     axios
-      .post("http://localhost:3300/user", user)
+      .post("https://nestjs-post.herokuapp.com/user", user)
       .then((res) => {
         console.log(res.data);
         navigate("/sign-in");
@@ -73,7 +73,7 @@ const User = () => {
         <Box sx={{ display: "grid", width: "40%" }}>
           <h1>Sign Up</h1>
           <Input
-            placeholder="Email"
+            placeholder="Username"
             className="m-4"
             name="email"
             value={infor.email}

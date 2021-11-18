@@ -4,6 +4,7 @@ import { Item } from "./Item/Item";
 import Box from "@mui/material/Box";
 import { Button, Grid, Modal, Typography } from "@mui/material/";
 import { ConfirmModal } from "./Modal/ConfirmModal";
+import LinearProgress from "@mui/material/LinearProgress";
 import { UpdateModal } from "./Modal/UpdateModal";
 export const TYPE_MODAL = {
   UPDATE_MODAL: "update",
@@ -20,6 +21,7 @@ export const PostInfor = () => {
       id: "",
     },
   ];
+  const [isloading, setIsLoading] = useState(false);
   const [post, setPost] = useState(state);
   const [open, setOpen] = useState({
     delete: false,
@@ -36,26 +38,25 @@ export const PostInfor = () => {
     console.log("close");
   };
   React.useEffect(() => {
+    setIsLoading(true);
+
     axios
-      .get("http://localhost:3300/post/")
+      .get("https://nestjs-post.herokuapp.com/post/")
       .then((res) => {
         console.log(res.data);
+        setIsLoading(false);
         setPost(res.data);
       })
       .catch((err) => console.log(err));
-    axios
-      .get("http://localhost:3300/profile", {
-        headers: { Authorization: "Bearer " + token },
-      })
-      .then((res) => {
-        console.log("====================================");
-        console.log(res.data);
-        console.log("====================================");
-      });
   }, []);
 
   return (
     <Grid container>
+      {isloading ? (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
+      ) : null}
       {post.map((p, index) => (
         <Item
           openModal={handleOpen}

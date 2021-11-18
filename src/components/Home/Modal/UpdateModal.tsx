@@ -35,7 +35,7 @@ export const UpdateModal = (props: Props) => {
     newPost.append("file", post.img);
     newPost.append("title", post.title);
     newPost.append("description", post.description);
-    const path = "http://localhost:3300/post/" + props.id;
+    const path = "https://nestjs-post.herokuapp.com/post/" + props.id;
 
     axios
       .patch(path, newPost)

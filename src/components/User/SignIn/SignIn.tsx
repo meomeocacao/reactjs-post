@@ -3,7 +3,10 @@ import { TextareaAutosize } from "@mui/core";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import LinearProgress from "@mui/material/LinearProgress";
+import { setTimeout } from "timers";
+import { LoginAPI } from "../../../api/api";
 export const SignIn = () => {
   const state = {
     email: "",
@@ -15,16 +18,19 @@ export const SignIn = () => {
     const { value, name } = e.target;
     setUser((prevState) => ({ ...prevState, [name]: value }));
   };
+  const navigate = useNavigate();
   const onSubmit = () => {
+    setCheck(true);
     axios
-      .post("http://localhost:3300/login", {
+      .post(LoginAPI, {
         username: user.email,
         password: user.password,
       })
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data);
-        setCheck(true);
+        navigate("/");
+        // setCheck(false);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +46,7 @@ export const SignIn = () => {
         <Box sx={{ display: "grid", width: "40%" }}>
           <h1> Sign In</h1>
           <TextField
-            placeholder="User"
+            placeholder="Username"
             className="m-4"
             name="email"
             value={user.email}
@@ -55,7 +61,11 @@ export const SignIn = () => {
             value={user.password}
             onChange={handleChange}
           />
-          {check ? <p>Login Success</p> : null}
+          {check ? (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          ) : null}
           <Box>
             {/* <Link to="/" component={RouterLink}> */}
             <Button color="primary" variant="contained" onClick={onSubmit}>
